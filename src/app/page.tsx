@@ -1,6 +1,7 @@
 'use client';
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 
 export default function Home() {
@@ -317,6 +318,14 @@ export default function Home() {
             </p>
             <p className="text-slate-500 text-sm">
               Built in London & Dubai
+            </p>
+            <p className="text-slate-400 text-sm mt-2">
+              <Link
+                href="/privacy"
+                className="hover:text-emerald-400 transition-colors"
+              >
+                Privacy Policy
+              </Link>
             </p>
           </div>
         </footer>
