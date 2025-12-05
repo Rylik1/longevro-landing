@@ -174,9 +174,25 @@ export default function PrivacyPage() {
           <p className="text-slate-500 text-sm">
             Built in London & Dubai
           </p>
+          <div className="flex justify-center gap-4 mt-2">
+            <Link
+              href="/privacy"
+              className="text-slate-400 hover:text-emerald-400 transition-colors text-sm"
+            >
+              Privacy Policy
+            </Link>
+            <span className="text-slate-600">•</span>
+            <Link
+              href="/support"
+              className="text-slate-400 hover:text-emerald-400 transition-colors text-sm"
+            >
+              Support
+            </Link>
+          </div>
         </div>
       </footer>
     </div>
   );
 }
+
 

@@ -43,6 +43,9 @@ export default function Home() {
               <a href="#faq" className="text-slate-300 hover:text-emerald-400 transition-colors">
                 FAQ
               </a>
+              <Link href="/support" className="text-slate-300 hover:text-emerald-400 transition-colors">
+                Support
+              </Link>
               <a
                 href="#get-the-app"
                 className="px-4 py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors font-medium"
@@ -319,14 +322,21 @@ export default function Home() {
             <p className="text-slate-500 text-sm">
               Built in London & Dubai
             </p>
-            <p className="text-slate-400 text-sm mt-2">
+            <div className="flex justify-center gap-4 mt-2">
               <Link
                 href="/privacy"
-                className="hover:text-emerald-400 transition-colors"
+                className="text-slate-400 hover:text-emerald-400 transition-colors text-sm"
               >
                 Privacy Policy
               </Link>
-            </p>
+              <span className="text-slate-600">•</span>
+              <Link
+                href="/support"
+                className="text-slate-400 hover:text-emerald-400 transition-colors text-sm"
+              >
+                Support
+              </Link>
+            </div>
           </div>
         </footer>
       </main>
