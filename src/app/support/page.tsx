@@ -170,7 +170,7 @@ const faqs = [
   },
   {
     question: "Is my data safe?",
-    answer: "Yes. Your data is encrypted and stored securely. We do not sell your personal information. You can export or delete your data at any time from the app settings."
+    answer: "Yes. Your data is stored securely and never sold to third parties. You can delete your account and all associated data at any time from the app settings."
   },
   {
     question: "What languages does the app support?",
