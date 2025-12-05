@@ -162,7 +162,7 @@ const faqs = [
   },
   {
     question: "What do the scores mean?",
-    answer: "The Muscle Preservation Score (MPS) and Skin Protection Score (SPS) are educational indicators based on your logged habits. They are not medical measurements or diagnoses - they simply help you track consistency with wellness habits like protein intake, exercise, hydration, and skincare."
+    answer: "The Muscle Preservation Score (MPS) and Skin Protection Score (SPS) are calculated from research-backed factors: protein intake, resistance training frequency, rate of weight loss, hydration, and skin care habits. They are educational indicators to help you track consistency, not medical measurements or diagnoses."
   },
   {
     question: "Where does the health information come from?",
