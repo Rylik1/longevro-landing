@@ -4,6 +4,97 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
+const faqs = [
+  {
+    question: "Is this a medical app?",
+    answer: "No. LongevRO is an educational wellness app designed to help you track your journey. It does not provide medical advice, diagnose conditions, or recommend medication changes. Always consult your doctor for medical decisions."
+  },
+  {
+    question: "Can I use it to change my GLP-1 dose?",
+    answer: "No. LongevRO does not tell you how much medication to take. All dosing decisions must be made with your healthcare provider. We only help you track what you're already doing."
+  },
+  {
+    question: "How are the scores calculated?",
+    answer: "Your Muscle Preservation Score (MPS) and Skin Protection Score (SPS) are based on research-backed factors: protein intake, resistance training frequency, rate of weight loss, hydration, and skin care habits. Scores are educational indicators, not medical measurements."
+  },
+  {
+    question: "Where does the health information come from?",
+    answer: "All educational content in LongevRO is based on peer-reviewed research from medical journals. The AI Coach displays citations (author, year, journal) at the bottom of health-related messages, with links to the original studies on PubMed."
+  },
+  {
+    question: "Is my data private?",
+    answer: "Yes. Your data is stored securely and never sold to third parties. You can delete your account and all associated data at any time from the app settings."
+  },
+  {
+    question: "Which languages do you support?",
+    answer: "Currently English and Arabic (Modern Standard Arabic and some Gulf dialects). More languages are planned based on user demand."
+  }
+];
+
+function FAQItem({ question, answer, isOpen, onClick }: { 
+  question: string; 
+  answer: string; 
+  isOpen: boolean; 
+  onClick: () => void;
+}) {
+  return (
+    <div className="border border-slate-700 rounded-xl overflow-hidden transition-all duration-300 hover:border-emerald-500/50">
+      <button
+        onClick={onClick}
+        className="w-full px-6 py-5 flex justify-between items-center bg-slate-800/50 hover:bg-slate-800 transition-colors"
+      >
+        <span className="text-white font-medium text-left">{question}</span>
+        <svg
+          className={`w-5 h-5 text-emerald-400 transition-transform duration-300 flex-shrink-0 ml-4 ${isOpen ? 'rotate-180' : ''}`}
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      <div 
+        className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}
+      >
+        <p className="px-6 py-5 text-slate-300 bg-slate-900/50 leading-relaxed">
+          {answer}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function FAQSection() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  return (
+    <section id="faq" className="py-20 md:py-32 bg-slate-950">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            Frequently Asked Questions
+          </h2>
+          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+            Everything you need to know about LongevRO
+          </p>
+        </div>
+        
+        <div className="max-w-3xl mx-auto space-y-4">
+          {faqs.map((faq, index) => (
+            <FAQItem
+              key={index}
+              question={faq.question}
+              answer={faq.answer}
+              isOpen={openIndex === index}
+              onClick={() => setOpenIndex(openIndex === index ? null : index)}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function Home() {
   const [email, setEmail] = useState('');
 
@@ -229,62 +320,7 @@ export default function Home() {
         </section>
 
         {/* FAQ Section */}
-        <section id="faq" className="py-20 bg-slate-900">
-          <div className="container mx-auto px-6 max-w-3xl">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Frequently Asked Questions</h2>
-            </div>
-
-            <div className="space-y-6">
-              {/* FAQ 1 */}
-              <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
-                <h3 className="text-xl font-semibold text-white mb-2">Is this a medical app?</h3>
-                <p className="text-slate-400">
-                  No. LongevRO is an educational wellness app designed to help you track your journey.
-                  It does not provide medical advice, diagnose conditions, or recommend medication changes.
-                  Always consult your doctor for medical decisions.
-                </p>
-              </div>
-
-              {/* FAQ 2 */}
-              <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
-                <h3 className="text-xl font-semibold text-white mb-2">Can I use it to change my GLP-1 dose?</h3>
-                <p className="text-slate-400">
-                  No. LongevRO does not tell you how much medication to take. All dosing decisions must be made with your healthcare provider.
-                  We only help you track what you're already doing.
-                </p>
-              </div>
-
-              {/* FAQ 3 */}
-              <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
-                <h3 className="text-xl font-semibold text-white mb-2">How are the scores calculated?</h3>
-                <p className="text-slate-400">
-                  Your Muscle Preservation Score (MPS) and Skin Protection Score (SPS) are based on research-backed factors:
-                  protein intake, resistance training frequency, rate of weight loss, hydration, and skin care habits.
-                  Scores are educational indicators, not medical measurements.
-                </p>
-              </div>
-
-              {/* FAQ 4 */}
-              <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
-                <h3 className="text-xl font-semibold text-white mb-2">Is my data private?</h3>
-                <p className="text-slate-400">
-                  Yes. Your health data is encrypted and stored securely. We never sell your information to third parties.
-                  You can export or delete your data at any time.
-                </p>
-              </div>
-
-              {/* FAQ 5 */}
-              <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
-                <h3 className="text-xl font-semibold text-white mb-2">Which languages do you support?</h3>
-                <p className="text-slate-400">
-                  Currently English and Arabic (Modern Standard Arabic and some Gulf dialects).
-                  More languages are planned based on user demand.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
+        <FAQSection />
 
         {/* CTA / Email Capture Section */}
         <section id="get-the-app" className="py-20 bg-slate-950">
