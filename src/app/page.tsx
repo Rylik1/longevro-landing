@@ -40,9 +40,9 @@ export default function Home() {
               <a href="#how-it-works" className="text-slate-300 hover:text-emerald-400 transition-colors">
                 How it works
               </a>
-              <Link href="/support" className="text-slate-300 hover:text-emerald-400 transition-colors">
+              <a href="#faq" className="text-slate-300 hover:text-emerald-400 transition-colors">
                 FAQ
-              </Link>
+              </a>
               <Link href="/support" className="text-slate-300 hover:text-emerald-400 transition-colors">
                 Support
               </Link>
@@ -225,6 +225,64 @@ export default function Home() {
               GLP-1 users (Ozempic, Wegovy, Mounjaro, etc.) who care about preserving muscle mass, protecting their skin and face,
               and having realistic expectations—not just seeing the number on the scale drop.
             </p>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section id="faq" className="py-20 bg-slate-900">
+          <div className="container mx-auto px-6 max-w-3xl">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Frequently Asked Questions</h2>
+            </div>
+
+            <div className="space-y-6">
+              {/* FAQ 1 */}
+              <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
+                <h3 className="text-xl font-semibold text-white mb-2">Is this a medical app?</h3>
+                <p className="text-slate-400">
+                  No. LongevRO is an educational wellness app designed to help you track your journey.
+                  It does not provide medical advice, diagnose conditions, or recommend medication changes.
+                  Always consult your doctor for medical decisions.
+                </p>
+              </div>
+
+              {/* FAQ 2 */}
+              <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
+                <h3 className="text-xl font-semibold text-white mb-2">Can I use it to change my GLP-1 dose?</h3>
+                <p className="text-slate-400">
+                  No. LongevRO does not tell you how much medication to take. All dosing decisions must be made with your healthcare provider.
+                  We only help you track what you're already doing.
+                </p>
+              </div>
+
+              {/* FAQ 3 */}
+              <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
+                <h3 className="text-xl font-semibold text-white mb-2">How are the scores calculated?</h3>
+                <p className="text-slate-400">
+                  Your Muscle Preservation Score (MPS) and Skin Protection Score (SPS) are based on research-backed factors:
+                  protein intake, resistance training frequency, rate of weight loss, hydration, and skin care habits.
+                  Scores are educational indicators, not medical measurements.
+                </p>
+              </div>
+
+              {/* FAQ 4 */}
+              <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
+                <h3 className="text-xl font-semibold text-white mb-2">Is my data private?</h3>
+                <p className="text-slate-400">
+                  Yes. Your health data is encrypted and stored securely. We never sell your information to third parties.
+                  You can export or delete your data at any time.
+                </p>
+              </div>
+
+              {/* FAQ 5 */}
+              <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
+                <h3 className="text-xl font-semibold text-white mb-2">Which languages do you support?</h3>
+                <p className="text-slate-400">
+                  Currently English and Arabic (Modern Standard Arabic and some Gulf dialects).
+                  More languages are planned based on user demand.
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 
