@@ -98,13 +98,8 @@ function FAQSection() {
 export default function Home() {
   const [email, setEmail] = useState('');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Email submitted:', email);
-    alert(`Thanks! We'll notify ${email} when LongevRO launches.`);
-    setEmail('');
-  };
+  const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   return (
     <div className="scroll-smooth">
@@ -210,6 +205,11 @@ export default function Home() {
       </header>
 
       <main className="min-h-screen bg-slate-950">
+        {/* Hidden form for Netlify detection */}
+        <form name="early-access" data-netlify="true" netlify-honeypot="bot-field" hidden>
+          <input type="email" name="email" />
+        </form>
+
         {/* Hero Section */}
         <section id="hero" className="container mx-auto px-6 py-20 md:py-32">
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -384,29 +384,82 @@ export default function Home() {
         <FAQSection />
 
         {/* CTA / Email Capture Section */}
-        <section id="get-the-app" className="py-20 bg-slate-950">
-          <div className="container mx-auto px-6 max-w-2xl text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Ready to preserve what matters?</h2>
-            <p className="text-slate-400 text-lg mb-8">
+        <section id="get-the-app" className="py-24 px-4 bg-slate-900/50">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Ready to preserve what matters?
+            </h2>
+            <p className="text-slate-400 text-lg mb-8 max-w-2xl mx-auto">
               Join the early access list and be the first to know when LongevRO launches.
             </p>
-
-            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <input
-                type="email"
-                required
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="flex-1 px-6 py-4 bg-slate-800 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500"
-              />
-              <button
-                type="submit"
-                className="px-8 py-4 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors font-semibold whitespace-nowrap"
+            
+            {submitted ? (
+              <div className="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-6 max-w-md mx-auto">
+                <div className="w-12 h-12 bg-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <h3 className="text-white font-semibold text-lg mb-2">You're on the list!</h3>
+                <p className="text-slate-400">We'll notify you as soon as LongevRO is ready to download.</p>
+              </div>
+            ) : (
+              <form 
+                name="early-access"
+                method="POST"
+                data-netlify="true"
+                netlify-honeypot="bot-field"
+                onSubmit={async (e) => {
+                  e.preventDefault();
+                  setSubmitting(true);
+                  
+                  try {
+                    const formData = new FormData();
+                    formData.append('form-name', 'early-access');
+                    formData.append('email', email);
+                    
+                    await fetch('/', {
+                      method: 'POST',
+                      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                      body: new URLSearchParams(formData as any).toString(),
+                    });
+                    
+                    setSubmitted(true);
+                  } catch (error) {
+                    console.error('Form submission error:', error);
+                    alert('Something went wrong. Please try again.');
+                  } finally {
+                    setSubmitting(false);
+                  }
+                }}
+                className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto"
               >
-                Notify me when it launches
-              </button>
-            </form>
+                {/* Honeypot field for spam protection */}
+                <input type="hidden" name="form-name" value="early-access" />
+                <p className="hidden">
+                  <label>
+                    Don't fill this out: <input name="bot-field" />
+                  </label>
+                </p>
+                
+                <input
+                  type="email"
+                  name="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your email"
+                  required
+                  className="flex-1 px-4 py-3 bg-slate-800 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition-colors"
+                />
+                <button
+                  type="submit"
+                  disabled={submitting}
+                  className="px-6 py-3 bg-emerald-500 text-white rounded-xl hover:bg-emerald-600 transition-colors font-semibold disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+                >
+                  {submitting ? 'Submitting...' : 'Notify me when it launches'}
+                </button>
+              </form>
+            )}
           </div>
         </section>
 
