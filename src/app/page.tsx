@@ -216,7 +216,7 @@ export default function Home() {
             {/* Left: Headline & CTAs */}
             <div className="space-y-6">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-                Keep your muscle while the weight drops.
+                Keep your muscle and skin health while the weight drops.
               </h1>
               <p className="text-xl text-slate-300 leading-relaxed">
                 Your bilingual AI companion (English/Arabic) for GLP-1 users—get personalized insights to preserve your muscle and skin while the weight drops.
