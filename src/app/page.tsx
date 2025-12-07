@@ -219,7 +219,7 @@ export default function Home() {
                 Keep your muscle while the weight drops.
               </h1>
               <p className="text-xl text-slate-300 leading-relaxed">
-                The bilingual GLP-1 companion (English/Arabic) that tracks injections, weight, protein, and skin health—so you lose fat, not your physique.
+                Your bilingual AI companion (English/Arabic) for GLP-1 users—get personalized insights to preserve your muscle and skin while the weight drops.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <a
