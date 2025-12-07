@@ -360,9 +360,9 @@ export default function Home() {
                 <div className="w-16 h-16 bg-emerald-500 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto">
                   3
                 </div>
-                <h3 className="text-2xl font-semibold text-white">Get weekly AI guidance</h3>
+                <h3 className="text-2xl font-semibold text-white">Get AI guidance anytime</h3>
                 <p className="text-slate-400">
-                  Receive personalized insights on your muscle and skin scores, plus tips to optimize your journey.
+                  Ask your AI coach questions and receive personalized insights on your muscle and skin scores, plus tips to optimize your journey.
                 </p>
               </div>
             </div>
