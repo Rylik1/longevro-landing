@@ -135,12 +135,9 @@ export default function PrivacyPage() {
               Your rights
             </h2>
             <p className="text-slate-300 leading-relaxed">
-              You can request deletion of your email address from our mailing list at any time by contacting us at{" "}
-              <a
-                href="mailto:support@longevro.com"
-                className="text-emerald-400 hover:text-emerald-300 underline"
-              >
-                support@longevro.com
+              You can request deletion of your email address from our mailing list at any time by contacting us through our{" "}
+              <a href="/support" className="text-emerald-400 hover:underline">
+                support page
               </a>
               . We will process your request promptly.
             </p>
@@ -153,13 +150,11 @@ export default function PrivacyPage() {
           <section className="space-y-4">
             <h2 className="text-2xl font-semibold text-white">Contact</h2>
             <p className="text-slate-300 leading-relaxed">
-              If you have any questions about this Privacy Policy, or you want us to delete your information, please email:{" "}
-              <a
-                href="mailto:support@longevro.com"
-                className="text-emerald-400 hover:text-emerald-300 underline"
-              >
-                support@longevro.com
+              If you have any questions about this Privacy Policy, or you want us to delete your information, please contact us through our{" "}
+              <a href="/support" className="text-emerald-400 hover:underline">
+                support page
               </a>
+              .
             </p>
           </section>
         </div>
