@@ -97,6 +97,7 @@ function FAQSection() {
 
 export default function Home() {
   const [email, setEmail] = useState('');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -109,7 +110,7 @@ export default function Home() {
     <div className="scroll-smooth">
       {/* Sticky Navbar */}
       <header className="sticky top-0 z-50 bg-slate-900/80 backdrop-blur-lg border-b border-slate-800">
-        <nav className="container mx-auto px-6 py-4">
+        <nav className="relative container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             {/* Logo + Name */}
             <div className="flex items-center gap-3">
@@ -123,7 +124,24 @@ export default function Home() {
               <span className="text-xl font-bold text-white">LongevRO</span>
             </div>
 
-            {/* Nav Links */}
+            {/* Mobile Menu Button */}
+            <button 
+              className="md:hidden text-white p-2"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
+            </button>
+
+            {/* Nav Links - Desktop */}
             <div className="hidden md:flex items-center gap-8">
               <a href="#features" className="text-slate-300 hover:text-emerald-400 transition-colors">
                 Features
@@ -145,6 +163,49 @@ export default function Home() {
               </a>
             </div>
           </div>
+
+          {/* Mobile Menu */}
+          {mobileMenuOpen && (
+            <div className="md:hidden absolute top-full left-0 right-0 bg-slate-900/95 backdrop-blur-lg border-t border-slate-800">
+              <div className="flex flex-col p-4 gap-4">
+                <a 
+                  href="#features" 
+                  className="text-slate-300 hover:text-emerald-400 transition-colors py-2"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Features
+                </a>
+                <a 
+                  href="#how-it-works" 
+                  className="text-slate-300 hover:text-emerald-400 transition-colors py-2"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  How it works
+                </a>
+                <a 
+                  href="#faq" 
+                  className="text-slate-300 hover:text-emerald-400 transition-colors py-2"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  FAQ
+                </a>
+                <Link 
+                  href="/support" 
+                  className="text-slate-300 hover:text-emerald-400 transition-colors py-2"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Support
+                </Link>
+                <a
+                  href="#get-the-app"
+                  className="px-4 py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors font-medium text-center"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Get the app
+                </a>
+              </div>
+            </div>
+          )}
         </nav>
       </header>
 
